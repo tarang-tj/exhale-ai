@@ -1,6 +1,10 @@
 # Exhale
 
-A minimal web app: describe what is stressing you, and get **what is in your control**, a **reframe**, and **three next steps**—powered by the Anthropic API.
+A minimal web app for talking yourself down. Describe what is stressing you and get back three things: **what is in your control**, a **reframe**, and **three next steps**. Generation is powered by the Anthropic API.
+
+## Stack
+
+Next.js (App Router) with a single API route at `app/api/calm/route.ts` that calls the Anthropic SDK. Default model is `claude-3-5-sonnet-20241022`, overridable via `ANTHROPIC_MODEL`.
 
 ## Prerequisites
 
@@ -10,37 +14,13 @@ A minimal web app: describe what is stressing you, and get **what is in your con
 ## Setup
 
 ```bash
-cd "/Users/tarangjammalamadaka/Desktop/Desktop - Tarang's Laptop/Start-up Projects/Exhale"
-cp .env.local.example .env.local
-```
-
-Edit `.env.local` and set `ANTHROPIC_API_KEY`.
-
-```bash
+cp .env.local.example .env.local   # then set ANTHROPIC_API_KEY
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open http://localhost:3000.
 
 ## Deploy (Vercel)
 
-Connect this repo to Vercel and add `ANTHROPIC_API_KEY` in Project → Settings → Environment Variables.
-
-## Push to GitHub
-
-From this folder (note the path has spaces and a special Desktop folder name):
-
-```bash
-cd "/Users/tarangjammalamadaka/Desktop/Desktop - Tarang's Laptop/Start-up Projects/Exhale"
-git init
-git branch -M main
-git remote add origin https://github.com/tarang-tj/exhale-ai.git
-git add -A
-git commit -m "Initial commit: Exhale AI"
-git push -u origin main
-```
-
-If `git push` asks for credentials, use a [Personal Access Token](https://github.com/settings/tokens) as the password, or set up SSH keys and use `git@github.com:tarang-tj/exhale-ai.git`.
-
-**Why `cd` failed before:** Comments on the same line as `cd` break the command in zsh—run `cd` alone, then other commands. The path `~/Desktop/start-up-projects/Exhale` does not exist on this machine; use the quoted path above.
+Connect the repo to Vercel and add `ANTHROPIC_API_KEY` under Project Settings, Environment Variables.
